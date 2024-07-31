@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        .contain h1{
+            text-align: center;
+            font-size: 50px;
+            color: white;
+        }
+        .photo{
+            margin: 100px 0 200px;
+            width: 70%;
+            height: 450px;
+            margin-left: 200px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .photo img{
+            width: 10%;
+            height: 80%;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid rgba(255, 255, 255, 0.68);
+            transition: all ease-in-out 0.5s;
+        }
+        .photo img:hover{
+            width: 25%;
+        }
+.rotate {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+  justify-content: center;
+  background-color:black;
+  overflow: hidden;
+}
+
+.image-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-top: -200px;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(0deg);
+  transition: transform 0.7s;
+}
+
+.image-container span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transform: rotateY(calc(var(--i) * 45deg)) translateZ(450px);
+}
+
+.image-container span img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 180px;
+  width: 100%;
+  border-radius: 10px;
+  border:1px solid whitesmoke;
+}
+.btn-container {
+  position: relative;
+  width: 80%;
+}
+
+.btn {
+  position: absolute;
+  bottom: -140px;
+  background-color: black;
+  color: white;
+  border-color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(1.5);
+}
+
+#prev {
+  left: 20%;
+}
+
+#next {
+  right: 20%;
+}
+.A h1{
+    color: crimson;
+    text-align: center;
+    font-size: 50px;
+    font-family: Arial, sans-serif;
+}
+    </style>
+</head>
+<body>
+    <div class="contain">
+        <h1>Gallery</h1>
+    </div>
+    <div class="photo">
+        <img src="images/cricket1.jpeg">
+        <img src="images/football.jpg">
+        <img src="images/hockey.jpeg">
+        <img src="images/tennis.jpeg">
+        <img src="images/badminton.jpg">
+        <img src="images/volleyball.jpeg">
+    </div>
+    <div class="A">
+        <h1>Cricket</h1>
+    </div>
+    <div class="rotate">
+        <div class="image-container">
+            <span style="--i: 1">
+              <img src="images/Australia-1.jpg" />
+            </span>
+            <span style="--i: 2">
+              <img src="images/ind team.jpg"/>
+            </span>
+            <span style="--i: 3">
+              <img src="images/south-africa.jpg"/>
+            </span>
+            <span style="--i: 4">
+              <img src="images/england.webp"/>
+            </span>
+            <span style="--i: 5">
+              <img src="images/newzland.webp"/>
+            </span>
+            <span style="--i: 6">
+              <img src="images/ind team.jpg" />
+            </span>
+            <span style="--i: 7">
+              <img src="images/south-africa.jpg" />
+            </span>
+            <span style="--i: 8">
+              <img src="images/ft3.jpeg"/>
+            </span>
+          </div>
+          <div class="btn-container">
+            <button class="btn" id="prev">Prev</button>
+            <button class="btn" id="next">Next</button>
+          </div>
+    </div>
+    <script>
+        const loverboy = document.querySelector(".image-container");
+        const vivekhero1 = document.getElementById("prev");
+        const vivekhero2 = document.getElementById("next");
+        let x = 0;
+        let timer;
+        vivekhero1.addEventListener("click", () => {
+        x = x + 45;
+        vivek();
+        });
+        vivekhero2.addEventListener("click", () => {
+        x = x - 45;
+        vivek();
+        });
+
+        function vivek() {
+        loverboy.style.transform = `perspective(1000px) rotateY(${x}deg)`;
+        timer = setTimeout(() => {
+        vivek();
+        }, 3000);
+       }
+</script>
+</body>
+</html>
